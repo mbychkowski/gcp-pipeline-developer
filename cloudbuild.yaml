@@ -1,0 +1,21 @@
+steps:
+- id: 'git-repo-status'
+  name: 'alpine'
+  entrypoint: 'sh'
+  dir: /workspace
+  args: 
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$REPO_NAME"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+
+# Entrypoint, timeout and environment variables
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  timeout: 240s
+  args: 
+  - '-c'
+  - | 
+      gcloud alpha builds submit --pack image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
