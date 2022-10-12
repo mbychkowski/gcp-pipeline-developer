@@ -13,7 +13,6 @@ steps:
 
 # Entrypoint, timeout and environment variables
 - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'gcloud'
   timeout: 240s
   args: 
   - '-c'
