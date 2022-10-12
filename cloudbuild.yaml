@@ -8,14 +8,14 @@ steps:
   - | 
       echo "***********************"
       echo "$REPO_NAME"
-      echo "$BRANCH_NAME"
+      echo "$TAG_NAME"
       echo "***********************"
 
 # Entrypoint, timeout and environment variables
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'gcloud'
   timeout: 240s
   args: 
   - '-c'
   - | 
-      gcloud alpha builds submit --pack image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
+      alpha builds submit --pack image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
