@@ -14,7 +14,4 @@ steps:
 # Entrypoint, timeout and environment variables
 - name: 'gcr.io/cloud-builders/gcloud'
   timeout: 240s
-  args: 
-  - '-c'
-  - | 
-      alpha builds submit --pack image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
+  args: [alpha, builds, submit, --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go]
