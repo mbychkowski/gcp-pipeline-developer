@@ -11,7 +11,9 @@ steps:
       echo "$TAG_NAME"
       echo "***********************"
 
-# Entrypoint, timeout and environment variables
+# Go app buildpack
 - name: 'gcr.io/cloud-builders/gcloud'
   timeout: 240s
-  args: [alpha, builds, submit, --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go]
+  args: [alpha, builds, submit, 
+    --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go,
+    --tag, $TAG_NAME]
