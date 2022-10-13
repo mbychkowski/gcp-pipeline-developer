@@ -22,10 +22,4 @@ steps:
   name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
   entrypoint: 'gcloud'
   waitFor: ['run-buildpack']
-  args: 
-  - | 
-      deploy releases create test-release-001 \
-        --project=mbychkowski-lab \
-        --region=us-east1 \
-        --delivery-pipeline=my-gke-demo-app-1 \
-        --images=simple-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
+  args: ['deploy', 'releases', 'demo-release-$TAG_NAME', '--project=mbychkowski-lab', '--region=us-east1', '--delivery-pipeline=my-gke-demo-app-1', '--images=simple-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME']
