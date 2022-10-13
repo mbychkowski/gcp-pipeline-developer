@@ -19,7 +19,8 @@ steps:
 
 # Deploy
 - id: 'deploy'
-  name: 'gcr.io/cloud-builders/gcloud'
+  name: 'gcr.io/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
   waitFor: ['run-buildpack']
   args: 
   - | 
