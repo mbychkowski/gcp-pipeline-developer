@@ -12,6 +12,19 @@ steps:
       echo "***********************"
 
 # Go app buildpack
-- name: 'gcr.io/cloud-builders/gcloud'
+- id: 'run-buildpack'
+  name: 'gcr.io/cloud-builders/gcloud'
   timeout: 240s
   args: [alpha, builds, submit, --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME]
+
+# Deploy
+- id: deploy
+  name: 'gcr.io/cloud-builders/gcloud'
+  waitFor: 'run-buildpack'
+  args: 
+  - | 
+      gcloud deploy releases create test-release-001 \
+        --project=mbychkowski-lab \
+        --region=us-central1 \
+        --delivery-pipeline=my-gke-demo-app-1 \
+        --images=simplee-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
