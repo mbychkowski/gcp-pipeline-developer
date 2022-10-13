@@ -27,4 +27,4 @@ steps:
         --project=mbychkowski-lab \
         --region=us-central1 \
         --delivery-pipeline=my-gke-demo-app-1 \
-        --images=simplee-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
+        --images=simple-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
