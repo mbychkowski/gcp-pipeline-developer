@@ -18,7 +18,7 @@ steps:
   args: [alpha, builds, submit, --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME]
 
 # Deploy
-- id: deploy
+- id: 'deploy'
   name: 'gcr.io/cloud-builders/gcloud'
   waitFor: 'run-buildpack'
   args: 
