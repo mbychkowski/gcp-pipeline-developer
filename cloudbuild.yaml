@@ -20,7 +20,7 @@ steps:
 # Deploy
 - id: 'deploy'
   name: 'gcr.io/cloud-builders/gcloud'
-  waitFor: 'run-buildpack'
+  waitFor: ['run-buildpack']
   args: 
   - | 
       deploy releases create test-release-001 \
