@@ -18,13 +18,14 @@ steps:
   args: [alpha, builds, submit, --pack, image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME]
 
 # Deploy
-# - id: 'deploy'
-#   name: 'gcr.io/cloud-builders/gcloud'
-#   waitFor: 'run-buildpack'
-#   args: 
-#   - | 
-#       deploy releases create test-release-001 \
-#         --project=mbychkowski-lab \
-#         --region=us-east1 \
-#         --delivery-pipeline=my-gke-demo-app-1 \
-#         --images=simple-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
+- id: 'deploy'
+  name: 'gcr.io/cloud-builders/gcloud'
+  args: 
+  waitFor: 'run-buildpack'
+  args: 
+  - | 
+      deploy releases create test-release-001 \
+        --project=mbychkowski-lab \
+        --region=us-east1 \
+        --delivery-pipeline=my-gke-demo-app-1 \
+        --images=simple-go=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go:$TAG_NAME
